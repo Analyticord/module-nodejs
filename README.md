@@ -40,3 +40,12 @@ This is the client that your bot uses, it currently doesn't do anything with you
 ```
 analyticord.init({noMessages: false, suppressMessages: false, sendVerifiedMessage: true, updateCheck: true}, '[token]', client)
 ```
+
+# Sending data to Analyticord
+
+We have a predefined set of eventTypes, you can view them at https://analyticord.solutions/api/eventTypes
+When you know which one you want to use, like 'message' you can call it like this:
+```
+analyticord.send('message', 'processed')
+```
+'message' is the eventType and 'processed' is the data sent with it (comma seperated, read more on our blog about eventTypes (https://anlyti.co/eventTypes)
