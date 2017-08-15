@@ -44,7 +44,7 @@ exports.init = function(options, tokenB, clientB) {
       }else {
         if (JSON.parse(body).error != undefined){
           console.log("[AC] Login failed. Error: " + JSON.parse(body).error + "\n[AC] Your bot will continue to start, but it will not log any information to the Analyticord Service.")
-        } else {body = JSON.parse(body)[0]
+        } else {body = JSON.parse(body)
         if (config.noMessages == false){console.log("Logged in as " + body.name + " by " + body.owner)}
         status = true //Ready.
         exports.done = true
