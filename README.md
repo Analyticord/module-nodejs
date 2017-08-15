@@ -1,6 +1,9 @@
 # Analyticord-source/module-nodejs/beta
 https://analyticord.solutions/api/version?lib=node
 
+This module requires:
+>Request
+
 ## Getting started
 To use the Analyticord NodeJS module, download the analyticord.js file, place it in the same directory as your bot and add this line to the top:
 
