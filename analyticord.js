@@ -7,7 +7,7 @@ var client = null
 var version = 1.0
 var config = null
 var server = "https://analyticord.solutions"
-
+var messages = 0
 
 function eventInit() {
   client.on('message', message => {
@@ -86,3 +86,40 @@ exports.send = function(eventType, data) {
       }
   });
 }
+
+exports.message = function() {
+  messages = messages + 1
+  console.log("Message count increased to " + messages)
+}
+
+function messageSubmit() {
+  if (messages > 0) {
+    console.log("Submitting at: " + messages)
+      request.post(
+    {url: server + '/api/submit',
+    'auth': {
+      'bearer': token
+    },
+    form: {
+      'eventType': "messages",
+      'data': messages
+    }
+  }, function(error, response, body) {
+      if (error) { 
+        console.log("[AC] Sending data failed, the servers may be down.")
+
+      }else {
+        if (JSON.parse(body).error != undefined) {
+          console.log("[AC] An error was raised while attempting to send messageSubmission to the server Error -> " + JSON.parse(body).error)
+        }else {
+          messages = 0
+          if (config.sendVerifiedMessage) {console.log("Data was sent successfully! You can verify the data was sent correctly by going to https://analyticord.solutions/api/verified?id=" + JSON.parse(body).ID)}
+        }
+      }
+  });
+  }
+
+}
+setInterval(function() {
+  messageSubmit()
+}, 60 * 1000);
