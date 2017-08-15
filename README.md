@@ -49,6 +49,14 @@ analyticord.init({noMessages: false, suppressMessages: false, sendVerifiedMessag
 We have a predefined set of eventTypes, you can view them at https://analyticord.solutions/api/eventTypes
 When you know which one you want to use, like 'message' you can call it like this:
 ```
-analyticord.send('message', 'processed')
+analyticord.send('guildJoin', 'verified')
 ```
-'message' is the eventType and 'processed' is the data sent with it (comma seperated, read more on our blog about eventTypes (https://anlyti.co/eventTypes)
+'guildJoin' is the eventType and 'verified' is the data sent with it (comma seperated, read more on our blog about eventTypes (https://anlyti.co/eventTypes)
+
+# Logging how many messages you recieve.
+
+To reduce strain on our servers, we only send the amount of messages your bot has dealt with every minute, to enable message tracking (NOT LOGGING), add this code to your onMessage event:
+```
+analyticord.message()
+```
+After the first call, the process will start and every minute the bot will send your cound of messages away to the server, the eventType for this is 'messages' if you wish to /api/getData them at a later date, please don't submit to messages yourself, it costs alot to run Analyticord and it currently doesn't make us any money back, thank you.
