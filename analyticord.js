@@ -89,12 +89,10 @@ exports.send = function(eventType, data) {
 
 exports.message = function() {
   messages = messages + 1
-  console.log("Message count increased to " + messages)
 }
 
 function messageSubmit() {
   if (messages > 0) {
-    console.log("Submitting at: " + messages)
       request.post(
     {url: server + '/api/submit',
     'auth': {
