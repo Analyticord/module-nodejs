@@ -6,7 +6,7 @@ var token = null
 var client = null
 var version = 1.0
 var config = null
-var server = "http://analyticord.solutions"
+var server = "https://analyticord.solutions"
 
 
 function eventInit() {
@@ -78,8 +78,11 @@ exports.send = function(eventType, data) {
         console.log("[AC] Sending data failed, the servers may be down.")
 
       }else {
-        if (config.sendVerifiedMessage) {console.log("Data was sent successfully! You can verify the data was sent correctly by going to https://analyticord.solutions/api/verified?id=" + JSON.parse(body).ID)}
-        
+        if (JSON.parse(body).error != undefined) {
+          console.log("[AC] An error was raised while attempting to send " + eventType + " to the server Error -> " + JSON.parse(body).error)
+        }else {
+          if (config.sendVerifiedMessage) {console.log("Data was sent successfully! You can verify the data was sent correctly by going to https://analyticord.solutions/api/verified?id=" + JSON.parse(body).ID)}
+        }
       }
   });
 }
