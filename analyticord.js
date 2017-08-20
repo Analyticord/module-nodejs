@@ -94,6 +94,7 @@ exports.message = function() {
 function messageSubmit() {
   if (messages > 0) {
     exports.send("messages", messages)
+    messages = 0
   }
 }
 setInterval(function() {
