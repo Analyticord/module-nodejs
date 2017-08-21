@@ -46,7 +46,7 @@ analyticord.init({noMessages: false, suppressMessages: false, sendVerifiedMessag
 
 # Sending data to Analyticord
 
-We have a predefined set of eventTypes, you can view them at https://analyticord.solutions/api/eventTypes
+We have a predefined set of eventTypes, you can view them at https://anlyti.co/eventTypes
 When you know which one you want to use, like 'message' you can call it like this:
 ```
 analyticord.send('guildJoin', guildCount)
