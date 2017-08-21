@@ -49,7 +49,7 @@ analyticord.init({noMessages: false, suppressMessages: false, sendVerifiedMessag
 We have a predefined set of eventTypes, you can view them at https://analyticord.solutions/api/eventTypes
 When you know which one you want to use, like 'message' you can call it like this:
 ```
-analyticord.send('guildJoin', 'verified')
+analyticord.send('guildJoin', guildCount)
 ```
 'guildJoin' is the eventType and 'verified' is the data sent with it (comma seperated, read more on our blog about eventTypes (https://anlyti.co/eventTypes)
 
